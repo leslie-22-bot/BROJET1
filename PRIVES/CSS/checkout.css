@@ -1,0 +1,262 @@
+/* ========== VARIABLES (couleurs du site) ========== */
+:root {
+  --violet: #6a1b9a;
+  --violet-fonce: #4a148c;
+  --violet-clair: #f3e8fb;
+  --blanc: #ffffff;
+  --noir: #111111;
+  --gris: #6b6b6b;
+  --bordure: #e2d4ee;
+}
+
+/* ========== BASE ========== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--violet-clair);
+  color: var(--noir);
+  line-height: 1.5;
+}
+
+/* ========== EN-TETE ========== */
+.tete {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 30px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.monlogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--blanc);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.monlogo p {
+  margin: 0;
+}
+
+.img-logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--blanc);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu a {
+  color: rgb(19, 2, 19);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+  font-family: 'Pacifico', cursive;
+  font-size: 22PX;
+}
+
+.menu a:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}
+
+.menu a[href="panier.html"] {
+  position: relative;
+  display: inline-block;
+  padding-right: 6px;
+}
+
+#cart-count {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  border-radius: 50%;
+  background: #e53935;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 0 0 2px var(--violet);
+}
+
+/* ========== CONTENU CHECKOUT ========== */
+main {
+  padding: 20px 15px 50px;
+}
+
+.checkout {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 30px;
+  background: var(--blanc);
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(106, 27, 154, 0.15);
+}
+
+.checkout h1 {
+  margin: 0 0 10px;
+  text-align: center;
+  color: var(--violet);
+  font-size: 1.9rem;
+}
+
+.intro {
+  margin: 0 0 25px;
+  text-align: center;
+  color: var(--gris);
+}
+
+/* ========== BLOCS (client / livraison / paiement) ========== */
+.bloc-checkout {
+  margin-bottom: 25px;
+  padding: 20px;
+  background: var(--violet-clair);
+  border: 1px solid var(--bordure);
+  border-left: 5px solid var(--violet);
+  border-radius: 12px;
+}
+
+.bloc-checkout h2 {
+  margin: 0 0 18px;
+  text-align: center;
+  color: var(--violet-fonce);
+  font-size: 1.2rem;
+}
+
+/* ========== CHAMPS ========== */
+.bloc-checkout label {
+  display: block;
+  margin: 12px 0 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--noir);
+}
+
+.bloc-checkout input[type="text"],
+.bloc-checkout input[type="tel"],
+.bloc-checkout input[type="email"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--bordure);
+  border-radius: 8px;
+  background: var(--blanc);
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.bloc-checkout input::placeholder {
+  color: #aaa;
+}
+
+.bloc-checkout input:focus {
+  outline: none;
+  border-color: var(--violet);
+  box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.2);
+}
+
+/* ========== MODES DE PAIEMENT (boutons radio + logo) ========== */
+.bloc-checkout .paiement,
+.bloc-checkout .mode-paiement,
+.bloc-checkout .option-paiement {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+  padding: 12px 14px;
+  background: var(--blanc);
+  border: 1px solid var(--bordure);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.bloc-checkout .paiement:hover,
+.bloc-checkout .mode-paiement:hover,
+.bloc-checkout .option-paiement:hover {
+  border-color: var(--violet);
+  background: #faf5fd;
+}
+
+.bloc-checkout input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--violet);
+}
+
+.bloc-checkout .paiement img,
+.bloc-checkout .mode-paiement img,
+.bloc-checkout .option-paiement img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+/* ========== BOUTON ========== */
+.btn-commande {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background: var(--violet);
+  color: var(--blanc);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-commande:hover {
+  background: var(--noir);
+}
+
+.btn-commande:active {
+  transform: scale(0.98);
+}
+
+/* ========== MOBILE ========== */
+@media (max-width: 600px) {
+  .tete {
+    padding: 10px 15px;
+    justify-content: center;
+  }
+
+  .checkout {
+    padding: 20px 15px;
+  }
+
+  .checkout h1 {
+    font-size: 1.5rem;
+  }
+}

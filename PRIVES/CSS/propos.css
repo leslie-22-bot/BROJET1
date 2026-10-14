@@ -1,0 +1,232 @@
+/* ===== 1. BANDEAU D'INTRODUCTION ===== */
+.intro {
+  text-align: center;
+  padding: 60px 6vw 70px;
+  background: linear-gradient(135deg, #948a9a, #9f14e5 60%, #910ada);
+  color: #fff;
+  border-radius: 0 0 40px 40px;          /* coins arrondis en bas */
+}
+.intro h1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(34px, 7vw, 58px);
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+.intro h2 {
+  margin: 0 0 18px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #e9d3f7;
+}
+
+.menu a[href="panier.html"] {
+  position: relative;
+  display: inline-block;
+  padding-right: 6px;
+
+}
+
+.menu a{
+  font-family: 'Pacifico', cursive;
+  font-size: 20PX;
+}
+#cart-count {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  border-radius: 50%;
+  background: #e53935;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 0 0 2px #6a1b9a;
+}
+.intro p {
+  max-width: 62ch;
+  margin: 0 auto;
+  font-size: 18px;
+  color: #f6ecfc;
+}
+
+/* ===== 2. BANDEAU DE CONFIANCE (remonte sur le bandeau violet) ===== */
+.confiance {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 30px;
+  max-width: 900px;
+  margin: -30px auto 0;                  /* marge négative : chevauche le bandeau */
+  padding: 18px 24px;
+  background: #fff;
+  color: #6a1b9a;
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(106, 27, 154, 0.2);
+  position: relative;
+}
+
+/* ===== 3. DEUX GRANDES CARTES ===== */
+.duo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 5vw;
+}
+.carte {
+  padding: 30px;
+  border-radius: 22px;
+}
+.carte h3 {
+  margin: 0 0 14px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 28px;
+}
+.carte p { margin: 0 0 12px; line-height: 1.7; }
+
+.carte-claire {                          /* carte blanche, bordure violette */
+  background: #fff;
+  border: 2px solid #6a1b9a;
+  box-shadow: 0 8px 25px rgba(106, 27, 154, 0.12);
+}
+.carte-claire h3 { color: #6a1b9a; }
+.carte-claire p { color: #3a2d45; }
+
+.carte-foncee {                          /* carte noire, texte clair */
+ background: #fff;
+  border: 2px solid #6a1b9a;
+  box-shadow: 0 8px 25px rgba(106, 27, 154, 0.12);
+}
+.carte-foncee h3 { color: #7003af; }
+.carte-foncee p { color: #070409; }
+
+/* ===== TITRES DE SECTIONS ===== */
+.titre-section {
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 36px;
+  color: #130a1a;
+  margin: 0 0 28px;
+}
+.titre-section::after {                  /* petit trait violet sous le titre */
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  margin: 10px auto 0;
+  background: #6a1b9a;
+  border-radius: 4px;
+}
+
+/* ===== 4. VALEURS ===== */
+.valeurs { max-width: 1100px; margin: 0 auto 60px; padding: 0 5vw; }
+.grille-valeurs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.valeur {
+  background: #fff;
+  padding: 28px 24px;
+  border-radius: 20px;
+  border-top: 5px solid #6a1b9a;
+  box-shadow: 0 6px 20px rgba(106, 27, 154, 0.12);
+  transition: 0.3s;
+}
+.valeur:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(106, 27, 154, 0.25);
+}
+.icone {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  background: #f0e4f8;
+  border-radius: 50%;
+  margin-bottom: 14px;
+}
+.valeur h3 { margin: 0 0 10px; color: #6a1b9a; font-size: 22px; }
+.valeur p { margin: 0; color: #4a3d56; line-height: 1.65; font-size: 15px; }
+
+/* ===== 5. ÉTAPES POUR COMMANDER ===== */
+.etapes {
+  padding: 50px 5vw;
+  background: #f0e4f8;
+}
+.grille-etapes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.etape {
+  text-align: center;
+  background: #fff;
+  padding: 24px 18px;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(106, 27, 154, 0.12);
+}
+.num {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 12px;
+  background: #6a1b9a;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 50%;
+}
+.etape p { margin: 0; color: #3a2d45; font-weight: 500; }
+
+/* ===== 6. APPEL À L'ACTION ===== */
+.appel {
+  text-align: center;
+  padding: 60px 6vw;
+}
+.appel h2 {
+  margin: 0 0 6px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 36px;
+  color: #130a1a;
+}
+.appel p { margin: 0 0 24px; color: #6d5f78; font-size: 18px; }
+.boutons-appel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+.btn {
+  padding: 14px 30px;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: 700;
+  transition: 0.3s;
+}
+.btn-violet { background: #6a1b9a; }
+.btn-violet:hover { background: #130a1a; }
+.btn-vert { background: #25d366; }        /* vert officiel de WhatsApp */
+.btn-vert:hover { background: #1da851; }
+
+/* ===== TÉLÉPHONE ===== */
+@media (max-width: 800px) {
+  .duo,
+  .grille-valeurs { grid-template-columns: 1fr; }
+  .grille-etapes { grid-template-columns: repeat(2, 1fr); }
+  .confiance { margin: -25px 5vw 0; }
+  .titre-section { font-size: 30px; }
+}

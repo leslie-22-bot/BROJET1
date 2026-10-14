@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../PRIVES/CSS/index.css">
+    <link rel="stylesheet" href="../PRIVES/CSS/checkout.css">
+</head>
+
+
+<body>
+    <header class="tete">
+<nav class="monlogo">
+    <img src="../PRIVES/IMAGES/logo.jpg" alt="logo.jpg" class="img-logo"> 
+
+    <p> LILY PRESTIGE</p>
+</nav>
+
+    <nav>
+<ul class="menu">
+    <li><a href="index.html">Accueil</a></li>
+     <li><a href="#contact">Contact</a></li>
+      <li><a href="propos.html">A propos</a> </li>
+           <a href="panier.html">🛒 <span id="cart-count">0</span></a>
+           <a href="checkout.html">checkout</a>
+           
+
+</ul>
+</nav>
+</header><br><br>
+
+<main>
+  <form action="felicitation.php" method="post">
+   <div class="checkout">
+
+    <h1>Finaliser ma commande</h1>
+
+    <p class="intro">
+        Merci de faire confiance à Lili Prestige.
+        Veuillez renseigner les informations ci-dessous.
+    </p>
+
+    <!-- INFORMATIONS DU CLIENT -->
+    <div class="bloc-checkout">
+        <h2> Informations du client</h2>
+
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="nom"
+               placeholder="Votre nom">
+
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" name="prenom"
+               placeholder="Votre prénom">
+
+        <label for="telephone">Téléphone</label>
+        <input type="tel" id="telephone" name="telephone"
+               placeholder="Votre numéro de téléphone">
+    </div>
+
+
+    <!-- INFORMATIONS POUR LA LIVRAISON -->
+    <div class="bloc-checkout">
+        <h2> Informations pour la livraison</h2>
+
+        <label for="ville">Ville</label>
+        <input type="text" id="ville" name="ville"
+               placeholder="Votre ville">
+
+        <label for="quartier">Quartier</label>
+        <input type="text" id="quartier" name="quartier"
+               placeholder="Votre quartier">
+    </div>
+
+    <!-- BOUTON -->
+    <button type="submit" class="btn-commande">
+        <a href="felicitation.html">Valider ma commande</a>
+    </button>
+
+</div>
+</form>
+</main>
+<script src="../PRIVES/JS/panier.js"></script>
+</body>
+</html>

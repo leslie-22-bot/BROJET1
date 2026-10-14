@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détail produit - LILY PRESTIGE</title>
+  <link rel="stylesheet" href="../PRIVES/CSS/index.css">
+  <link rel="stylesheet" href="../PRIVES/CSS/details.css">
+</head>
+<body>
+
+  <header class="tete">
+    <nav class="monlogo">
+      <img src="../PRIVES/IMAGES/logo.jpg" alt="logo.jpg" class="img-logo">
+      <p>LILY PRESTIGE</p>
+    </nav>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">accueil</a></li>
+        <li><a href="index.html#contact">contact</a></li>
+        <li><a href="propos.html">a propos</a></li>
+        <li><a href="panier.html">🛒 <span id="cart-count">0</span></a></li>
+        <li><a href="checkout.html">checkout</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <p class="fil-ariane">
+      <a href="index.html">Accueil</a> &rsaquo;
+      <span id="fil-categorie"></span> &rsaquo;
+      <span id="fil-nom"></span>
+    </p>
+
+    <section class="detail-produit">
+      <div class="galerie">
+        <img id="img-produit" src="" alt="">
+        <span class="badge-stock" id="badge-stock"></span>
+      </div>
+
+      <div class="carte-detail">
+        <p class="tag-categorie" id="categorie-produit"></p>
+        <h1 id="nom-produit"></h1>
+        <p class="prix-bloc"><span id="prix-produit"></span></p>
+        <p id="description-produit" class="resume"></p>
+
+        <p class="label-pointure">
+          Choisissez votre pointure : <strong id="pointures-produit">non choisie</strong>
+        </p>
+        <div id="choix-pointure" class="choix-pointure"></div>
+
+        <p id="stock-produit" class="stock"></p>
+
+        <button id="add-to-cart">AJOUTER AU PANIER</button>
+
+        <a id="btn-whatsapp" href="#" target="_blank" class="btn-whatsapp">
+          <span class="logo"><img src="../PRIVES/IMAGES/logo1.jpg" alt="logo"></span>
+          COMMANDER PAR WHATSAPP
+        </a>
+
+        <ul class="garanties">
+          <li>🚚 Livraison directement chez vous</li>
+          <li>💵 Paiement à la livraison possible</li>
+          <li>🔄 Échange sous 48 h si la pointure ne convient pas</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="infos-detaillees">
+      <h2>Description du produit</h2>
+      <p id="description-longue"></p>
+
+      <div id="bloc-points-forts">
+        <h2>Points forts</h2>
+        <ul id="points-forts"></ul>
+      </div>
+
+      <h2>Caractéristiques</h2>
+      <table id="table-caracteristiques"></table>
+
+      <h2>Livraison et retours</h2>
+      <ul>
+        <li>Livraison directement chez vous</li>
+        <li>Paiement : Orange Money, MTN Money, Wave ou espèces à la livraison</li>
+        <li>Échange possible sous 48 h si la pointure ne convient pas</li>
+        <li>Une question ? Écrivez-nous sur WhatsApp avant de commander</li>
+      </ul>
+    </section>
+
+    <section class="produits-similaires">
+      <h2>Vous aimerez aussi</h2>
+      <div id="liste-similaires" class="grille-similaires"></div>
+    </section>
+  </main>
+
+  <script src="../PRIVES/JS/produits.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id'));
+    const produit = produits.find(p => p.id === id);
+
+    const NUMERO = "2250143328856";
+    let pointureChoisie = "";
+
+    function formatPrix(prix) {
+      const n = parseInt(String(prix).replace(/\D/g, ''));
+      if (isNaN(n)) return prix;
+      return n.toLocaleString('fr-FR').replace(/[\u202f\u00a0]/g, ' ') + " FCFA";
+    }
+
+    function majWhatsApp() {
+      let message = "Bonjour, je suis intéressé par " + produit.nom + " à " + formatPrix(produit.prix);
+      if (pointureChoisie) message += " (pointure " + pointureChoisie + ")";
+      message += ".";
+      document.getElementById('btn-whatsapp').href =
+        "https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(message);
+    }
+
+    function afficherPointures() {
+      const zone = document.getElementById('choix-pointure');
+      (produit.pointures || "").split(',').forEach(p => {
+        const valeur = p.trim();
+        if (!valeur) return;
+        const bouton = document.createElement('button');
+        bouton.type = 'button';
+        bouton.className = 'pointure';
+        bouton.textContent = valeur;
+        bouton.addEventListener('click', () => {
+          pointureChoisie = valeur;
+          document.getElementById('pointures-produit').textContent = valeur;
+          zone.querySelectorAll('.pointure').forEach(b => b.classList.remove('active'));
+          bouton.classList.add('active');
+          majWhatsApp();
+        });
+        zone.appendChild(bouton);
+      });
+    }
+
+    function afficherSimilaires() {
+      const autres = produits.filter(p => p.id !== produit.id);
+      const memeCat = autres.filter(p => p.categorie === produit.categorie);
+      const memeGenre = autres.filter(p => p.genre === produit.genre && !memeCat.includes(p));
+      const reste = autres.filter(p => !memeCat.includes(p) && !memeGenre.includes(p));
+      const liste = [...memeCat, ...memeGenre, ...reste].slice(0, 4);
+
+      const zone = document.getElementById('liste-similaires');
+      liste.forEach(p => {
+        zone.insertAdjacentHTML('beforeend',
+          '<a class="carte-similaire" href="details.html?id=' + p.id + '">' +
+            '<img src="' + p.image + '" alt="' + p.nom + '">' +
+            '<p class="nom">' + p.nom + '</p>' +
+            '<p class="prix">' + formatPrix(p.prix) + '</p>' +
+          '</a>');
+      });
+    }
+
+    if (produit) {
+      document.title = produit.nom + " - LILY PRESTIGE";
+
+      document.getElementById('img-produit').src = produit.image;
+      document.getElementById('img-produit').alt = produit.nom;
+      document.getElementById('nom-produit').textContent = produit.nom;
+      document.getElementById('description-produit').textContent = produit.description;
+      document.getElementById('prix-produit').textContent = formatPrix(produit.prix);
+      document.getElementById('categorie-produit').textContent = produit.categorie;
+      document.getElementById('fil-categorie').textContent = produit.categorie;
+      document.getElementById('fil-nom').textContent = produit.nom;
+
+      const enStock = produit.stock > 0;
+      document.getElementById('badge-stock').textContent = enStock ? "En stock" : "Rupture";
+      document.getElementById('badge-stock').classList.add(enStock ? "ok" : "ko");
+      document.getElementById('stock-produit').textContent = enStock
+        ? (produit.stock <= 3 ? "Plus que " + produit.stock + " en stock, dépêchez-vous !" : "Disponible")
+        : "Produit momentanément indisponible";
+
+      afficherPointures();
+      majWhatsApp();
+
+      document.getElementById('description-longue').textContent = produit.details || produit.description;
+
+      const ul = document.getElementById('points-forts');
+      if (produit.points_forts && produit.points_forts.length) {
+        produit.points_forts.forEach(t => {
+          const li = document.createElement('li');
+          li.textContent = t;
+          ul.appendChild(li);
+        });
+      } else {
+        document.getElementById('bloc-points-forts').style.display = 'none';
+      }
+
+      const infos = Object.assign({
+        "Catégorie": produit.categorie,
+        "Genre": produit.genre,
+        "Couleur": produit.couleur,
+        "Matière": produit.matiere,
+        "Pointures": produit.pointures
+      }, produit.caracteristiques);
+
+      const table = document.getElementById('table-caracteristiques');
+      Object.entries(infos).forEach(([nom, valeur]) => {
+        if (valeur) {
+          table.insertAdjacentHTML('beforeend', '<tr><th>' + nom + '</th><td>' + valeur + '</td></tr>');
+        }
+      });
+
+      afficherSimilaires();
+    } else {
+      document.querySelector('main').innerHTML =
+        '<p class="introuvable">Produit introuvable. <a href="index.html">Retour à l\'accueil</a></p>';
+    }
+  </script>
+  <script src="../PRIVES/JS/panier.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon panier - LILY PRESTIGE</title>
+  <link rel="stylesheet" href="../PRIVES/CSS/index.css">
+  <link rel="stylesheet" href="../PRIVES/CSS/panier.css">
+</head>
+<body>
+
+  <header class="tete">
+    <nav class="monlogo">
+      <img src="../PRIVES/IMAGES/logo.jpg" alt="logo.jpg" class="img-logo">
+      <p>LILY PRESTIGE</p>
+    </nav>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">accueil</a></li>
+        <li><a href="index.html#contact">contact</a></li>
+        <li><a href="propos.html">a propos</a></li>
+        <li><a href="panier.html">🛒 <span id="cart-count">0</span></a></li>
+        <li><a href="checkout.html">checkout</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-panier">
+    <h1>Mon panier</h1>
+
+    <div id="liste-panier"></div>
+
+    <div class="resume-panier">
+      <p>Total : <strong id="total-panier">0 FCFA</strong></p>
+      <a href="checkout.html" id="btn-commander" class="btn-commander">Passer la commande</a>
+      <a href="index.html" class="btn-retour">Continuer mes achats</a>
+    </div>
+  </main>
+
+  <script src="../PRIVES/JS/panier.js"></script>
+</body>
+</html>

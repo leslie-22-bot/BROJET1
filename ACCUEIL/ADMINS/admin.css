@@ -1,0 +1,114 @@
+/* ---------- 1. Les couleurs, définies une seule fois ---------- */
+:root {
+    --violet: #7a1fd1;
+    --violet-fonce: #5c169e;
+    --violet-pale: #f3ecfb;
+    --noir: #150316;
+    --blanc: #ffffff;
+}
+
+/* ---------- 2. Règle générale ---------- */
+* {
+    box-sizing: border-box;
+}
+
+/* ---------- 3. Le fond de la page ---------- */
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 40px 20px;
+    background: linear-gradient(160deg, var(--violet) 0%, var(--blanc) 80%);
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--blanc);
+}
+
+/* ---------- 4. Le titre et le texte au-dessus du formulaire ---------- */
+h2 {
+    max-width: 650px;
+    margin: 0 auto 12px;
+    text-align: center;
+    font-size: 1.6rem;
+    line-height: 1.3;
+}
+
+body p {
+    max-width: 650px;
+    margin: 0 auto 28px;
+    text-align: center;
+    color: #06010d;
+    line-height: 1.6;
+}
+
+/* ---------- 5. La carte blanche qui contient le formulaire ---------- */
+main {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 30px;
+    background: var(--blanc);
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    color: var(--noir);
+}
+
+/* ---------- 6. Les textes au-dessus des champs ---------- */
+label {
+    display: block;
+    margin: 18px 0 6px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+label:first-of-type {
+    margin-top: 0;
+}
+
+/* ---------- 7. Les champs de saisie ---------- */
+input {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d9cdee;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--noir);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--violet);
+    box-shadow: 0 0 0 3px var(--violet-pale);
+}
+
+/* ---------- 8. Le bouton VALIDER ---------- */
+button {
+    display: block;
+    width: 100%;
+    margin-top: 26px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: var(--violet);
+    color: var(--blanc);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--violet-fonce);
+}
+
+/* ---------- 9. Sur téléphone ---------- */
+@media (max-width: 600px) {
+    body {
+        padding: 24px 14px;
+    }
+
+    main {
+        padding: 22px;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+}
